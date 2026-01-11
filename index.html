@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Stars | Купить Telegram Stars & TON</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        :root {
+            /* Светлая тема */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-inverse: #ffffff;
+            --card-bg: #ffffff;
+            --card-border: #e5e7eb;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --radius: 16px;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --input-bg: #ffffff;
+            --input-border: #d1d5db;
+        }
+
+        .dark-theme {
+            /* Тёмная тема */
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-inverse: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            --radius: 16px;
+            --accent: #818cf8;
+            --accent-hover: #6366f1;
+            --success: #34d399;
+            --danger: #f87171;
+            --warning: #fbbf24;
+            --input-bg: #334155;
+            --input-border: #475569;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            padding-top: 70px; /* Для фиксированного хедера */
+        }
+
+        /* Фиксированный хедер */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .logo-text {
+            color: white;
+        }
+
+        .logo-text h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+            background: linear-gradient(90deg, #fff, #c7d2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(15deg);
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border: 1px solid var(--card-border);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .section-title i {
+            color: var(--accent);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 25px;
+            border: 2px solid var(--card-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.1);
+        }
+
+        .product-card.active {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), transparent);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-icon-container {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(99, 102, 241, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .product-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .product-limits {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .limit-badge {
+            background: var(--bg-secondary);
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .limit-badge i {
+            color: var(--accent);
+        }
+
+        /* Buttons */
+        .btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn:disabled {
+            background: var(--text-secondary);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn:disabled:hover::after {
+            left: -100%;
+        }
+
+        /* Payment Screen */
+        .payment-screen {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border: 1px solid var(--card-border);
+            display: none;
+        }
+
+        .payment-screen.active {
+            display: block;
+            animation: slideIn 0.4s ease;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 25px;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid var(--card-border);
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .order-total {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid var(--accent);
+        }
+
+        /* Input Groups */
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .input-with-hint {
+            position: relative;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 16px;
+            background: var(--input-bg);
+            border: 2px solid var(--input-border);
+            border-radius: 12px;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .input-field.error {
+            border-color: var(--danger);
+        }
+
+        .input-hint {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .error-text {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 8px;
+            display: none;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .payment-method {
+            background: var(--bg-secondary);
+            border: 2px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .payment-method.active {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent);
+        }
+
+        .payment-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .payment-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .payment-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Address Box */
+        .address-box {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid var(--card-border);
+            display: none;
+        }
+
+        .address-box.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .address-title {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+        }
+
+        .address-value {
+            font-family: 'Courier New', monospace;
+            background: var(--input-bg);
+            padding: 18px;
+            border-radius: 10px;
+            word-break: break-all;
+            margin-bottom: 20px;
+            border: 1px solid var(--input-border);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .copy-btn.copied {
+            background: linear-gradient(135deg, var(--success), #0ca678);
+        }
+
+        /* Success Screen */
+        .success-screen {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 50px 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+            display: none;
+        }
+
+        .success-screen.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--success), #0ca678);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .success-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .success-text {
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Steps */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--card-border);
+            z-index: 1;
+        }
+
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--card-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-number {
+            background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .step-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 25px 0;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-link:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                padding-top: 60px;
+            }
+            
+            .header {
+                padding: 12px 15px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+            
+            .main-content, .payment-screen {
+                padding: 20px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps {
+                flex-direction: column;
+                gap: 25px;
+                align-items: center;
+            }
+            
+            .steps::before {
+                display: none;
+            }
+            
+            .step {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                width: 100%;
+                text-align: left;
+            }
+            
+            .step-number {
+                margin: 0;
+                flex-shrink: 0;
+            }
+            
+            .footer-links {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-card {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            .product-price {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <!-- Фиксированный хедер -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-stars"></i>
+            </div>
+            <div class="logo-text">
+                <h1>Art Stars</h1>
+                <p>Купить Stars & TON | Мгновенная доставка</p>
+            </div>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Сменить тему">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+
+    <div class="container">
+        <!-- Основной экран -->
+        <div class="main-screen" id="mainScreen">
+            <div class="main-content">
+                <div class="section-title">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h2>Выберите товар</h2>
+                </div>
+                
+                <!-- Шаги покупки -->
+                <div class="steps">
+                    <div class="step active">
+                        <div class="step-number">1</div>
+                        <div class="step-text">Выбор товара</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Оформление</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-text">Оплата</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-text">Получение</div>
+                    </div>
+                </div>
+                
+                <div class="products-grid">
+                    <!-- Telegram Stars -->
+                    <div class="product-card" data-product="stars" data-price="1.45" data-min="100" data-max="25000" data-currency="RUB">
+                        <div class="product-icon-container">
+                            <img src="https://avatars.mds.yandex.net/i?id=64c98024bfaebf2e899edfd8e9deac812a909cc1-5371416-images-thumbs&n=13" 
+                                 alt="Stars" class="product-icon">
+                        </div>
+                        <div class="product-badge">Популярное</div>
+                        <h3 class="product-title">Telegram Stars</h3>
+                        <div class="product-price" id="starPrice">от 1.45₽ / шт</div>
+                        <p class="product-desc">
+                            Покупка Telegram Stars для поддержки создателей контента. 
+                            Мгновенная доставка на ваш аккаунт.
+                        </p>
+                        <div class="product-limits">
+                            <div class="limit-badge">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>Минимум: 100</span>
+                            </div>
+                            <div class="limit-badge">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>Максимум: 25,000</span>
+                            </div>
+                        </div>
+                        <button class="btn" onclick="selectProduct('stars')">
+                            <i class="fas fa-shopping-cart"></i> Купить звёзды
+                        </button>
+                    </div>
+
+                    <!-- TON Coin -->
+                    <div class="product-card" data-product="ton" data-price="167" data-min="1" data-max="165" data-currency="RUB">
+                        <div class="product-icon-container">
+                            <img src="https://avatars.mds.yandex.net/i?id=08b33407902bbd29bdcb599712d09b1312a232ac-13013551-images-thumbs&n=13" 
+                                 alt="TON" class="product-icon">
+                        </div>
+                        <div class="product-badge">Выгодно</div>
+                        <h3 class="product-title">TON Coin</h3>
+                        <div class="product-price" id="tonPrice">167₽ / TON</div>
+                        <p class="product-desc">
+                            Криптовалюта от Telegram. Быстрые переводы, низкие комиссии. 
+                            Пополняйте баланс и используйте в экосистеме TON.
+                        </p>
+                        <div class="product-limits">
+                            <div class="limit-badge">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>Минимум: 1 TON</span>
+                            </div>
+                            <div class="limit-badge">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>Максимум: 165 TON</span>
+                            </div>
+                        </div>
+                        <button class="btn" onclick="selectProduct('ton')">
+                            <i class="fas fa-coins"></i> Купить TON
+                        </button>
+                    </div>
+
+                    <!-- Telegram Premium -->
+                    <div class="product-card" data-product="premium">
+                        <div class="product-icon-container">
+                            <img src="https://avatars.mds.yandex.net/i?id=7d7e866cba774ee094b38bf1f280c1301fe4ef61-8341432-images-thumbs&n=13" 
+                                 alt="Premium" class="product-icon">
+                        </div>
+                        <div class="product-badge">Премиум</div>
+                        <h3 class="product-title">Telegram Premium</h3>
+                        <p class="product-desc">
+                            Расширенные возможности Telegram: увеличенные лимиты, 
+                            уникальные функции и эксклюзивные стикеры.
+                        </p>
+                        
+                        <div class="premium-options">
+                            <div class="premium-option" data-months="3" data-price="15" onclick="selectPremium(3, 15)">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; padding: 12px; border-radius: 10px; cursor: pointer; background: var(--bg-secondary);" class="premium-item">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fas fa-crown" style="color: var(--warning);"></i>
+                                        <span>3 месяца</span>
+                                    </div>
+                                    <span style="font-weight: 700; color: var(--accent);" id="premium3Price">15 USDT</span>
+                                </div>
+                            </div>
+                            <div class="premium-option" data-months="6" data-price="19" onclick="selectPremium(6, 19)">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; padding: 12px; border-radius: 10px; cursor: pointer; background: var(--bg-secondary);" class="premium-item">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fas fa-crown" style="color: var(--warning);"></i>
+                                        <span>6 месяцев</span>
+                                    </div>
+                                    <span style="font-weight: 700; color: var(--accent);" id="premium6Price">19 USDT</span>
+                                </div>
+                            </div>
+                            <div class="premium-option" data-months="12" data-price="28" onclick="selectPremium(12, 28)">
+                                <div style="display: flex; justify-content: space-between; padding: 12px; border-radius: 10px; cursor: pointer; background: var(--bg-secondary);" class="premium-item">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <i class="fas fa-crown" style="color: var(--warning);"></i>
+                                        <span>12 месяцев</span>
+                                    </div>
+                                    <span style="font-weight: 700; color: var(--accent);" id="premium12Price">28 USDT</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn" id="premiumBtn" onclick="selectProduct('premium')" disabled>
+                            <i class="fas fa-crown"></i> Выберите срок
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Инфо блок -->
+                <div style="background: var(--bg-secondary); border-radius: 12px; padding: 25px; margin-top: 30px; border: 1px solid var(--card-border);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <div style="background: var(--accent); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--text-primary); margin-bottom: 5px;">Безопасность и гарантии</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                                Все платежи защищены криптографией. Гарантируем доставку товара в течение 24 часов после подтверждения оплаты.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-bolt" style="color: var(--success);"></i>
+                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Доставка 5-15 минут</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-headset" style="color: var(--accent);"></i>
+                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Поддержка 24/7</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-lock" style="color: var(--warning);"></i>
+                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Безопасные платежи</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Экран оплаты -->
+        <div class="payment-screen" id="paymentScreen">
+            <button class="back-btn" onclick="showMainScreen()">
+                <i class="fas fa-arrow-left"></i> Вернуться к выбору
+            </button>
+
+            <div class="section-title">
+                <i class="fas fa-credit-card"></i>
+                <h2>Оформление заказа</h2>
+            </div>
+
+            <!-- Обновленные шаги -->
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">Выбор товара</div>
+                </div>
+                <div class="step active">
+                    <div class="step-number">2</div>
+                    <div class="step-text">Оформление</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">Оплата</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-text">Получение</div>
+                </div>
+            </div>
+
+            <div class="order-summary" id="orderSummary">
+                <!-- Детали заказа будут здесь -->
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" id="quantityLabel">Количество:</label>
+                <div class="input-with-hint">
+                    <input type="number" id="quantityInput" class="input-field" placeholder="Введите количество" min="100" max="25000" step="1">
+                    <span class="input-hint" id="quantityHint">мин. 100, макс. 25000</span>
+                </div>
+                <div class="error-text" id="quantityError">
+                    <i class="fas fa-exclamation-circle"></i> Укажите корректное количество
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Ваш @username или ID Telegram:</label>
+                <input type="text" id="usernameInput" class="input-field" placeholder="Пример: @username или 1234567890">
+                <div class="error-text" id="usernameError">
+                    <i class="fas fa-exclamation-circle"></i> Укажите username или ID
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Ваш email (для уведомлений):</label>
+                <input type="email" id="emailInput" class="input-field" placeholder="email@example.com">
+            </div>
+
+            <div class="section-title">
+                <i class="fas fa-wallet"></i>
+                <h2>Способ оплаты</h2>
+            </div>
+
+            <div class="payment-methods">
+                <div class="payment-method" data-method="crypto_bot" onclick="selectPaymentMethod('crypto_bot')">
+                    <div class="payment-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="payment-name">Крипто-бот</div>
+                    <div class="payment-desc">Рекомендуемый способ</div>
+                </div>
+                <div class="payment-method" data-method="bep20" onclick="selectPaymentMethod('bep20')">
+                    <div class="payment-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="payment-name">BEP20 кошелёк</div>
+                    <div class="payment-desc">Binance Smart Chain</div>
+                </div>
+            </div>
+
+            <!-- Оплата через крипто-бота -->
+            <div class="address-box" id="cryptoBotPayment">
+                <div class="address-title">
+                    <i class="fas fa-robot"></i> Оплата через крипто-бота
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6;">
+                    Нажмите кнопку ниже для перехода к оплате в крипто-боте Telegram. 
+                    После оплаты вернитесь и подтвердите оплату.
+                </p>
+                <a href="https://t.me/send?start=IVPchbBr41Lh" class="btn" id="botLink" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Перейти к оплате
+                </a>
+            </div>
+
+            <!-- Оплата на BEP20 кошелёк -->
+            <div class="address-box" id="bep20Payment">
+                <div class="address-title">
+                    <i class="fas fa-wallet"></i> Оплата на BEP20 кошелёк
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 15px; line-height: 1.6;">
+                    Отправьте точную сумму на следующий адрес (BEP20 сеть):
+                </p>
+                <div class="address-value" id="walletAddress">0x798236f6980A595FE823b595d71816Dc713fAFdE</div>
+                <button class="copy-btn" id="copyAddressBtn" onclick="copyAddress()">
+                    <i class="far fa-copy"></i> Скопировать адрес
+                </button>
+                <p style="color: var(--warning); margin-top: 20px; font-size: 0.9rem; line-height: 1.6;">
+                    <i class="fas fa-exclamation-triangle"></i> Внимание: отправляйте точную сумму с расчётом на комиссию сети!
+                </p>
+            </div>
+
+            <button class="btn" id="confirmPaymentBtn" onclick="confirmPayment()" disabled style="margin-top: 25px;">
+                <i class="fas fa-lock"></i> Подтвердить оплату
+            </button>
+
+            <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), transparent); border-radius: 12px; border-left: 4px solid var(--danger);">
+                <div style="font-weight: 700; color: var(--danger); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-exclamation-triangle"></i> Важная информация!
+                </div>
+                <div style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+                    1. После оплаты <strong>обязательно отправьте скриншот</strong> в @Art_StarsBot<br>
+                    2. Сохраните номер вашего заказа для связи с поддержкой<br>
+                    3. Доставка товара осуществляется в течение 24 часов после подтверждения оплаты
+                </div>
+            </div>
+        </div>
+
+        <!-- Экран успеха -->
+        <div class="success-screen" id="successScreen">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2 class="success-title">Заказ успешно оформлен!</h2>
+            <div class="success-text">
+                Номер вашего заказа: <strong id="orderNumber" style="color: var(--accent); font-size: 1.1em;">#0000</strong><br><br>
+                
+                <div style="background: var(--bg-secondary); padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="fas fa-list-check" style="color: var(--accent);"></i>
+                        <span style="font-weight: 600;">Следующие шаги:</span>
+                    </div>
+                    <ol style="text-align: left; color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+                        <li>Завершите оплату выбранным способом</li>
+                        <li>Отправьте скриншот оплаты в @Art_StarsBot</li>
+                        <li>Укажите номер заказа в сообщении</li>
+                        <li>Получите товар в течение 24 часов</li>
+                    </ol>
+                </div>
+                
+                Если у вас возникли вопросы, напишите в поддержку @Art_StarsBot
+            </div>
+            
+            <button class="btn" onclick="showMainScreen()" style="margin-bottom: 20px;">
+                <i class="fas fa-shopping-cart"></i> Сделать новый заказ
+            </button>
+            
+            <a href="https://t.me/Art_StarsBot" style="color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 500; font-size: 0.95rem;" target="_blank">
+                <i class="fab fa-telegram"></i> Перейти в бота для отправки скриншота
+            </a>
+        </div>
+
+        <!-- Футер -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="https://t.me/+1Aak2IHRK45jN2Uy" class="footer-link" target="_blank">
+                    <i class="fab fa-telegram"></i> Канал
+                </a>
+                <a href="https://t.me/N3_ART" class="footer-link" target="_blank">
+                    <i class="fas fa-user-tie"></i> Создатель
+                </a>
+                <a href="https://t.me/Art_StarsBot" class="footer-link" target="_blank">
+                    <i class="fas fa-headset"></i> Поддержка
+                </a>
+            </div>
+            <div class="copyright">
+                © 2024 Art Stars | Работаем с 2023 года
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // =================== КОНФИГУРАЦИЯ ===================
+        let currentProduct = null;
+        let currentPrice = null;
+        let currentCurrency = null;
+        let currentMin = null;
+        let currentMax = null;
+        let selectedMonths = null;
+        let selectedPremiumPrice = null;
+        let selectedPaymentMethod = null;
+        let orderId = Math.floor(1000 + Math.random() * 9000);
+        
+        // Цены по умолчанию (будут обновляться из бота)
+        const prices = {
+            star_rate: 1.45,
+            ton_rate: 167.0,
+            premium_3: 15,
+            premium_6: 19,
+            premium_12: 28
+        };
+
+        // Telegram WebApp Integration
+        let tg = window.Telegram?.WebApp;
+
+        // =================== ТЕМА ===================
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        function initTheme() {
+            const savedTheme = localStorage.getItem('artStarsTheme');
+            if (savedTheme === 'light') {
+                document.body.classList.remove('dark-theme');
+                themeIcon.className = 'fas fa-sun';
+                themeToggle.title = 'Включить тёмную тему';
+            } else {
+                document.body.classList.add('dark-theme');
+                themeIcon.className = 'fas fa-moon';
+                themeToggle.title = 'Включить светлую тему';
+            }
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (document.body.classList.contains('dark-theme')) {
+                document.body.classList.remove('dark-theme');
+                localStorage.setItem('artStarsTheme', 'light');
+                themeIcon.className = 'fas fa-sun';
+                themeToggle.title = 'Включить тёмную тему';
+            } else {
+                document.body.classList.add('dark-theme');
+                localStorage.setItem('artStarsTheme', 'dark');
+                themeIcon.className = 'fas fa-moon';
+                themeToggle.title = 'Включить светлую тему';
+            }
+        });
+
+        // =================== ПРОДУКТЫ ===================
+        function selectProduct(productType) {
+            // Сброс предыдущего выбора
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Установка активного продукта
+            const card = document.querySelector(`[data-product="${productType}"]`);
+            if (!card) return;
+            
+            card.classList.add('active');
+            currentProduct = productType;
+            
+            if (productType === 'premium') {
+                if (!selectedMonths) {
+                    showNotification('Выберите срок Premium сначала!', 'warning');
+                    return;
+                }
+                currentPrice = selectedPremiumPrice;
+                currentCurrency = 'USDT';
+                currentMin = 1;
+                currentMax = 1;
+            } else {
+                currentPrice = parseFloat(card.dataset.price);
+                currentCurrency = card.dataset.currency;
+                currentMin = parseInt(card.dataset.min);
+                currentMax = parseInt(card.dataset.max);
+            }
+            
+            // Обновление шагов
+            updateSteps(2);
+            showPaymentScreen();
+        }
+
+        function selectPremium(months, price) {
+            // Сброс предыдущего выбора
+            document.querySelectorAll('.premium-item').forEach(item => {
+                item.style.background = 'var(--bg-secondary)';
+                item.style.border = 'none';
+            });
+            
+            // Установка активного варианта
+            const selectedItem = document.querySelector(`[data-months="${months}"] .premium-item`);
+            if (selectedItem) {
+                selectedItem.style.background = 'linear-gradient(135deg, rgba(99, 102, 241, 0.1), transparent)';
+                selectedItem.style.border = '1px solid var(--accent)';
+            }
+            
+            selectedMonths = months;
+            selectedPremiumPrice = price;
+            
+            // Активация кнопки покупки
+            const premiumBtn = document.getElementById('premiumBtn');
+            premiumBtn.disabled = false;
+            premiumBtn.innerHTML = `<i class="fas fa-crown"></i> Купить Premium ${months} мес`;
+        }
+
+        // =================== ЭКРАНЫ ===================
+        function showPaymentScreen() {
+            document.getElementById('mainScreen').style.display = 'none';
+            document.getElementById('paymentScreen').classList.add('active');
+            document.getElementById('successScreen').classList.remove('active');
+            
+            resetPaymentForm();
+            updateOrderSummary();
+            updateQuantityInput();
+        }
+
+        function showMainScreen() {
+            document.getElementById('mainScreen').style.display = 'block';
+            document.getElementById('paymentScreen').classList.remove('active');
+            document.getElementById('successScreen').classList.remove('active');
+            
+            // Сброс выбора
+            resetSelections();
+            updateSteps(1);
+        }
+
+        function showSuccessScreen(orderId) {
+            document.getElementById('paymentScreen').classList.remove('active');
+            document.getElementById('successScreen').classList.add('active');
+            document.getElementById('orderNumber').textContent = `#${orderId}`;
+            
+            // Обновление шагов
+            updateSteps(4);
+            
+            // Генерация нового ID для следующего заказа
+            window.orderId = Math.floor(1000 + Math.random() * 9000);
+        }
+
+        // =================== ФОРМА ОПЛАТЫ ===================
+        function updateQuantityInput() {
+            const quantityInput = document.getElementById('quantityInput');
+            const quantityLabel = document.getElementById('quantityLabel');
+            const quantityHint = document.getElementById('quantityHint');
+            
+            if (currentProduct === 'premium') {
+                quantityInput.disabled = true;
+                quantityInput.value = '1';
+                quantityInput.min = '1';
+                quantityInput.max = '1';
+                quantityLabel.textContent = 'Количество аккаунтов:';
+                quantityHint.textContent = '1 аккаунт';
+            } else {
+                quantityInput.disabled = false;
+                quantityInput.min = currentMin;
+                quantityInput.max = currentMax;
+                quantityInput.value = currentMin;
+                quantityLabel.textContent = currentProduct === 'stars' ? 'Количество звёзд:' : 'Количество TON:';
+                quantityHint.textContent = currentProduct === 'stars' 
+                    ? `мин. ${currentMin}, макс. ${currentMax.toLocaleString()}`
+                    : `мин. ${currentMin}, макс. ${currentMax}`;
+            }
+        }
+
+        function updateOrderSummary() {
+            const quantity = parseInt(document.getElementById('quantityInput').value) || currentMin;
+            const total = currentProduct === 'premium' ? currentPrice : (quantity * currentPrice);
+            
+            const productNames = {
+                'stars': 'Telegram Stars',
+                'ton': 'TON Coin',
+                'premium': `Telegram Premium (${selectedMonths} мес)`
+            };
+            
+            const units = {
+                'stars': 'звёзд',
+                'ton': 'TON',
+                'premium': 'аккаунт'
+            };
+            
+            const summaryHTML = `
+                <div class="order-item">
+                    <span>Товар:</span>
+                    <span>${productNames[currentProduct]}</span>
+                </div>
+                <div class="order-item">
+                    <span>Количество:</span>
+                    <span id="summaryQuantity">${quantity} ${units[currentProduct]}</span>
+                </div>
+                <div class="order-item">
+                    <span>Цена за единицу:</span>
+                    <span>${currentPrice.toFixed(2)} ${currentCurrency}</span>
+                </div>
+                <div class="order-item">
+                    <span>Способ доставки:</span>
+                    <span>На указанный аккаунт</span>
+                </div>
+                <div class="order-total">
+                    <span>Итого к оплате:</span>
+                    <span id="summaryTotal">${total.toFixed(2)} ${currentCurrency}</span>
+                </div>
+            `;
+            
+            document.getElementById('orderSummary').innerHTML = summaryHTML;
+            
+            // Слушатель изменения количества
+            document.getElementById('quantityInput').addEventListener('input', function() {
+                const qty = parseInt(this.value) || 0;
+                const total = currentProduct === 'premium' ? currentPrice : (qty * currentPrice);
+                
+                document.getElementById('summaryQuantity').textContent = `${qty} ${units[currentProduct]}`;
+                document.getElementById('summaryTotal').textContent = `${total.toFixed(2)} ${currentCurrency}`;
+                
+                validateForm();
+            });
+            
+            validateForm();
+        }
+
+        function selectPaymentMethod(method) {
+            // Сброс предыдущего выбора
+            document.querySelectorAll('.payment-method').forEach(option => {
+                option.classList.remove('active');
+            });
+            
+            // Установка активного способа
+            const selectedOption = document.querySelector(`[data-method="${method}"]`);
+            if (selectedOption) {
+                selectedOption.classList.add('active');
+            }
+            
+            selectedPaymentMethod = method;
+            
+            // Показ соответствующего блока оплаты
+            if (method === 'crypto_bot') {
+                document.getElementById('cryptoBotPayment').classList.add('active');
+                document.getElementById('bep20Payment').classList.remove('active');
+                
+                // Обновление ссылки бота
+                updateBotLink();
+            } else if (method === 'bep20') {
+                document.getElementById('cryptoBotPayment').classList.remove('active');
+                document.getElementById('bep20Payment').classList.add('active');
+            }
+            
+            validateForm();
+            updateSteps(3);
+        }
+
+        function updateBotLink() {
+            const quantity = parseInt(document.getElementById('quantityInput').value) || currentMin;
+            const total = currentProduct === 'premium' ? currentPrice : (quantity * currentPrice);
+            const username = document.getElementById('usernameInput').value || '';
+            
+            const productNames = {
+                'stars': 'Telegram Stars',
+                'ton': 'TON Coin',
+                'premium': `Telegram Premium ${selectedMonths} мес`
+            };
+            
+            const message = encodeURIComponent(
+                `Заказ Art Stars #${orderId}\n\n` +
+                `Товар: ${productNames[currentProduct]}\n` +
+                `Количество: ${quantity}\n` +
+                `Сумма: ${total} ${currentCurrency}\n` +
+                `Username: ${username}\n\n` +
+                `Оплатите указанную сумму`
+            );
+            
+            document.getElementById('botLink').href = `https://t.me/send?start=IVPchbBr41Lh&text=${message}`;
+        }
+
+        // =================== ВАЛИДАЦИЯ ===================
+        function validateForm() {
+            const quantityInput = document.getElementById('quantityInput');
+            const usernameInput = document.getElementById('usernameInput');
+            const confirmBtn = document.getElementById('confirmPaymentBtn');
+            
+            let isValid = true;
+            
+            // Валидация количества
+            if (currentProduct !== 'premium') {
+                const quantity = parseInt(quantityInput.value);
+                if (isNaN(quantity) || quantity < currentMin || quantity > currentMax) {
+                    quantityInput.classList.add('error');
+                    document.getElementById('quantityError').style.display = 'flex';
+                    isValid = false;
+                } else {
+                    quantityInput.classList.remove('error');
+                    document.getElementById('quantityError').style.display = 'none';
+                }
+            }
+            
+            // Валидация username
+            const username = usernameInput.value.trim();
+            if (!username || username.length < 2) {
+                usernameInput.classList.add('error');
+                document.getElementById('usernameError').style.display = 'flex';
+                isValid = false;
+            } else {
+                usernameInput.classList.remove('error');
+                document.getElementById('usernameError').style.display = 'none';
+            }
+            
+            // Проверка выбора способа оплаты
+            if (!selectedPaymentMethod) {
+                isValid = false;
+            }
+            
+            // Обновление кнопки
+            confirmBtn.disabled = !isValid;
+            confirmBtn.innerHTML = isValid 
+                ? `<i class="fas fa-lock"></i> Подтвердить оплату`
+                : `<i class="fas fa-lock"></i> Заполните все поля`;
+            
+            return isValid;
+        }
+
+        // =================== ПОДТВЕРЖДЕНИЕ ОПЛАТЫ ===================
+        function confirmPayment() {
+            if (!validateForm()) {
+                showNotification('Пожалуйста, заполните все поля корректно', 'error');
+                return;
+            }
+            
+            const quantity = currentProduct === 'premium' ? 1 : parseInt(document.getElementById('quantityInput').value);
+            const username = document.getElementById('usernameInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+            const total = currentProduct === 'premium' ? currentPrice : (quantity * currentPrice);
+            
+            // Создание данных заказа
+            const orderData = {
+                orderId: orderId,
+                product: currentProduct,
+                productName: currentProduct === 'premium' ? `Premium ${selectedMonths} мес` : currentProduct,
+                quantity: quantity,
+                username: username,
+                email: email,
+                total: total,
+                currency: currentCurrency,
+                paymentMethod: selectedPaymentMethod,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Отправка в Telegram бот
+            if (tg) {
+                tg.sendData(JSON.stringify({
+                    type: 'new_order',
+                    data: orderData
+                }));
+            }
+            
+            // Сохранение в localStorage
+            localStorage.setItem(`artstars_order_${orderId}`, JSON.stringify(orderData));
+            
+            // Показ экрана успеха
+            showSuccessScreen(orderId);
+            showNotification('Заказ успешно создан!', 'success');
+        }
+
+        // =================== ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ===================
+        function copyAddress() {
+            const address = document.getElementById('walletAddress').textContent;
+            navigator.clipboard.writeText(address).then(() => {
+                const btn = document.getElementById('copyAddressBtn');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i> Адрес скопирован!';
+                btn.classList.add('copied');
+                
+                showNotification('Адрес скопирован в буфер обмена', 'success');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function resetPaymentForm() {
+            document.getElementById('quantityInput').value = currentProduct === 'premium' ? '1' : currentMin;
+            document.getElementById('usernameInput').value = '';
+            document.getElementById('emailInput').value = '';
+            
+            // Сброс ошибок
+            document.querySelectorAll('.error-text').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.input-field').forEach(el => el.classList.remove('error'));
+            
+            // Сброс способа оплаты
+            selectedPaymentMethod = null;
+            document.querySelectorAll('.payment-method').forEach(option => option.classList.remove('active'));
+            document.getElementById('cryptoBotPayment').classList.remove('active');
+            document.getElementById('bep20Payment').classList.remove('active');
+            
+            // Деактивация кнопки подтверждения
+            document.getElementById('confirmPaymentBtn').disabled = true;
+        }
+
+        function resetSelections() {
+            currentProduct = null;
+            currentPrice = null;
+            currentCurrency = null;
+            currentMin = null;
+            currentMax = null;
+            selectedMonths = null;
+            selectedPremiumPrice = null;
+            
+            document.querySelectorAll('.product-card').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.premium-item').forEach(item => {
+                item.style.background = 'var(--bg-secondary)';
+                item.style.border = 'none';
+            });
+            
+            const premiumBtn = document.getElementById('premiumBtn');
+            premiumBtn.disabled = true;
+            premiumBtn.innerHTML = `<i class="fas fa-crown"></i> Выберите срок`;
+        }
+
+        function updateSteps(activeStep) {
+            document.querySelectorAll('.step').forEach((step, index) => {
+                step.classList.remove('active');
+                if (index + 1 === activeStep) {
+                    step.classList.add('active');
+                }
+            });
+        }
+
+        function showNotification(message, type = 'info') {
+            // Создание уведомления
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--danger)' : 'var(--accent)'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 10px;
+                box-shadow: var(--shadow);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                animation: slideIn 0.3s ease;
+                max-width: 400px;
+            `;
+            
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideIn 0.3s ease reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // =================== ИНИЦИАЛИЗАЦИЯ ===================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация темы
+            initTheme();
+            
+            // Инициализация Telegram WebApp
+            if (tg) {
+                tg.ready();
+                tg.expand();
+                tg.enableClosingConfirmation();
+                tg.setHeaderColor('#1e293b');
+                tg.setBackgroundColor('#0f172a');
+                
+                // Кнопка "Назад"
+                tg.BackButton.show();
+                tg.BackButton.onClick(showMainScreen);
+            }
+            
+            // Обновление цен на странице
+            updatePrices();
+            
+            // Слушатели событий
+            document.getElementById('quantityInput').addEventListener('input', validateForm);
+            document.getElementById('usernameInput').addEventListener('input', validateForm);
+            document.getElementById('emailInput').addEventListener('input', validateForm);
+            
+            // Автозаполнение username если есть Telegram
+            if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
+                const user = tg.initDataUnsafe.user;
+                const usernameInput = document.getElementById('usernameInput');
+                if (user.username) {
+                    usernameInput.value = `@${user.username}`;
+                } else if (user.id) {
+                    usernameInput.value = user.id.toString();
+                }
+            }
+        });
+
+        // Функция обновления цен
+        function updatePrices() {
+            // Обновление цены звезд
+            const starPrice = document.getElementById('starPrice');
+            if (starPrice) {
+                starPrice.textContent = `от ${prices.star_rate}₽ / шт`;
+            }
+            
+            // Обновление цены TON
+            const tonPrice = document.getElementById('tonPrice');
+            if (tonPrice) {
+                tonPrice.textContent = `${prices.ton_rate}₽ / TON`;
+            }
+            
+            // Обновление цен Premium
+            document.getElementById('premium3Price').textContent = `${prices.premium_3} USDT`;
+            document.getElementById('premium6Price').textContent = `${prices.premium_6} USDT`;
+            document.getElementById('premium12Price').textContent = `${prices.premium_12} USDT`;
+            
+            // Обновление data-price атрибутов
+            const starCard = document.querySelector('[data-product="stars"]');
+            if (starCard) starCard.dataset.price = prices.star_rate;
+            
+            const tonCard = document.querySelector('[data-product="ton"]');
+            if (tonCard) tonCard.dataset.price = prices.ton_rate;
+            
+            const premium3 = document.querySelector('[data-months="3"]');
+            if (premium3) premium3.dataset.price = prices.premium_3;
+            
+            const premium6 = document.querySelector('[data-months="6"]');
+            if (premium6) premium6.dataset.price = prices.premium_6;
+            
+            const premium12 = document.querySelector('[data-months="12"]');
+            if (premium12) premium12.dataset.price = prices.premium_12;
+        }
+
+        // Загрузка актуальных цен с сервера (пример)
+        async function loadPricesFromServer() {
+            try {
+                // Здесь можно добавить запрос к API для получения актуальных цен
+                // const response = await fetch('/api/prices');
+                // const data = await response.json();
+                // Object.assign(prices, data);
+                // updatePrices();
+            } catch (error) {
+                console.error('Ошибка загрузки цен:', error);
+            }
+        }
+    </script>
+</body>
+</html>
